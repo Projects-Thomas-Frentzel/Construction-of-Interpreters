@@ -57,6 +57,7 @@ for url_4 in site4.find_all("p"):
     termossite4.append(url_4.get_text())
 
 print(termossite4)
+print("-----------------------------------------------------------------")
 
 print('5º:')
 
