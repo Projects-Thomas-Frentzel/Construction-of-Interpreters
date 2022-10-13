@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-
 url_1 = requests.get('https://www.ibm.com/cloud/learn/natural-language-processing')
 
 site1 = BeautifulSoup(url_1.text, "html.parser")
@@ -34,8 +33,7 @@ for url_1 in site1.find_all("p"):
     termossite1.append(url_1.get_text())
 
 print(termossite1)
-print("-------------------------------------------------")
-
+print("-----------------------------------------------------------------")
 
 print('2º:')
 
@@ -43,7 +41,7 @@ for url_2 in site2.find_all("p"):
     termossite2.append(url_2.get_text())
 
 print(termossite2)
-print("-------------------------------------------------")
+print("-----------------------------------------------------------------")
 
 print('3º:')
 
@@ -51,8 +49,7 @@ for url_3 in site3.find_all("p"):
     termossite3.append(url_3.get_text())
 
 print(termossite3)
-print("-------------------------------------------------")
-
+print("-----------------------------------------------------------------")
 
 print('4º:')
 
@@ -60,8 +57,6 @@ for url_4 in site4.find_all("p"):
     termossite4.append(url_4.get_text())
 
 print(termossite4)
-print("-------------------------------------------------")
-
 
 print('5º:')
 
