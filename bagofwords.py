@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 import requests
 import spacy
 
-spa = spacy.load("en_core_web_sm")
+Spacy = spacy.load("en_core_web_sm")
 
 # 1º url e suas funções:
 
@@ -60,8 +60,8 @@ st5 = BeautifulSoup(url_5.text,"html.parser").find("p").get_text()
 #Para armazenar as sentensas em cinco listas diferentes.
 
 def unico(p):
-  n = spa(p)
-  return [n.orth_ for n in n if not n.is_punct]
+  s = Spacy(p)
+  return [s.orth_ for s in s if not s.is_punct]
 
 sent_site1 = unico(st1)
 sent_site2 = unico(st2)
@@ -69,12 +69,7 @@ sent_site3 = unico(st3)
 sent_site4 = unico(st4)
 sent_site5 = unico(st5)
 
-#um vocabulario com todas as palavras dos cinco arquivos
-
-Vcb = (sent_site1 + sent_site2 + sent_site3 + sent_site4 + sent_site5)
-vetor = [Vcb]
-
-snt_vetor = []
+#Bag of Words
 
 #Aqui é para verificar o numero de vezes que uma palavra aparece em um
 #determinado arquivo
@@ -88,6 +83,15 @@ def BOW(sent, Vcb):
         freq += 1
     VetP.append(freq)
   return VetP
+
+
+#vetor para criar a matriz
+snt_vetor = []
+
+#um vocabulario com todas as palavras dos cinco arquivos
+Vcb = (sent_site1 + sent_site2 + sent_site3 + sent_site4 + sent_site5)
+vetor = [Vcb]
+
 
 #Armazena tudo dentro de um vetor.
 vetor.append(BOW(sent_site1, Vcb))
@@ -108,4 +112,3 @@ print("------------------------------------------------")
 print("Quantidade de vezes que as palavras se repetem no site 4: ",vetor[4])
 print("------------------------------------------------") 
 print("Quantidade de vezes que as palavras se repetem no site 5: ",vetor[5])
-
