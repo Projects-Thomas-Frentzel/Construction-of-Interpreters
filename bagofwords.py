@@ -60,7 +60,7 @@ st5 = BeautifulSoup(url_5.text,"html.parser").find("p").get_text()
 #Para armazenar as sentensas em cinco listas diferentes.
 
 def unico(p):
-  n = SPACY(p)
+  n = spa(p)
   return [n.orth_ for n in n if not n.is_punct]
 
 sent_site1 = unico(st1)
