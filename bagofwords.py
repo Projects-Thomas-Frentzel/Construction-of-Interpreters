@@ -69,7 +69,6 @@ sent_site3 = unico(st3)
 sent_site4 = unico(st4)
 sent_site5 = unico(st5)
 
-#Bag of Words
 
 #Aqui é para verificar o numero de vezes que uma palavra aparece em um
 #determinado arquivo
@@ -93,22 +92,19 @@ Vcb = (sent_site1 + sent_site2 + sent_site3 + sent_site4 + sent_site5)
 vetor = [Vcb]
 
 
-#Armazena tudo dentro de um vetor.
 vetor.append(BOW(sent_site1, Vcb))
-vetor.append(BOW(sent_site2, Vcb))
-vetor.append(BOW(sent_site3, Vcb))
-vetor.append(BOW(sent_site4, Vcb))
-vetor.append(BOW(sent_site5, Vcb))
-
-#Prints
 print("Palavras extraidas dos sites: ",Vcb)
 print("------------------------------------------------")
 print("Quantidade de vezes que as palavras se repetem no site 1: ",vetor[1])
+vetor.append(BOW(sent_site2, Vcb))
 print("------------------------------------------------")
 print("Quantidade de vezes que as palavras se repetem no site 2: ",vetor[2]) 
 print("------------------------------------------------")
+vetor.append(BOW(sent_site3, Vcb))
 print("Quantidade de vezes que as palavras se repetem no site 3: ",vetor[3]) 
 print("------------------------------------------------")
+vetor.append(BOW(sent_site4, Vcb))
 print("Quantidade de vezes que as palavras se repetem no site 4: ",vetor[4])
 print("------------------------------------------------") 
+vetor.append(BOW(sent_site5, Vcb))
 print("Quantidade de vezes que as palavras se repetem no site 5: ",vetor[5])
