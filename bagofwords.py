@@ -14,7 +14,6 @@ import re
 import pandas
 import requests
 from bs4 import BeautifulSoup
-from google.colab import files
 
 palavras = [] #Para armazenar as sentenças em cinco listas diferentes.
 unicos = [] #Para armazenar as sentenças em cinco listas diferentes.
