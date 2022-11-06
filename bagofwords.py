@@ -19,7 +19,7 @@ palavras = [] #Para armazenar as sentenças em cinco listas diferentes.
 unicos = [] #Para armazenar as sentenças em cinco listas diferentes.
 vetor = [] #Aqui é para verificar o numero de vezes que uma palavra aparece em um #determinado arquivo
 
-
+#urls:
 urls = ['https://www.ibm.com/cloud/learn/natural-language-processing', 
         'https://en.wikipedia.org/wiki/Natural_language_processing', 
         'https://monkeylearn.com/natural-language-processing/',
@@ -33,10 +33,8 @@ for site in urls:
         data.decompose()#remover os scripts e estilos
     palavra = ' '.join(soup.stripped_strings)
     palavra = re.sub(r"[\n\t]", "", palavra)#remover os espaços em branco
-    splitters = re.split("[!?.;:,]", palavra)#separar as sentenças
-    palavras.append(" ".join(splitters))#adicionar as sentenças em uma lista
-
-print(palavra)
+    separadores = re.split("[!?.;:,]", palavra)#separar as sentenças
+    palavras.append(" ".join(separadores))#adicionar as sentenças em uma lista
 
 def unico(p): #verificar se a palavra já existe no vetor
   sem_rep = set() #criar um conjunto vazio
