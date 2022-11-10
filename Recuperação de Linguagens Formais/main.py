@@ -65,7 +65,7 @@ while counterwhile < 3:
   listapronta = []
   counterwhile = counterwhile + 1
   opcaocontagem = []
-  file = get_file(f"txt{counterwhile}.txt").split("\n")
+  file = get_file(f"teste{counterwhile}.txt").split("\n")
   validadorparenteses = False
   verificar = []
   
