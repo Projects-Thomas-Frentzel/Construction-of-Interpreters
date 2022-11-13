@@ -51,13 +51,15 @@ finitos e não poderá utilizar nenhuma expressão regular.
 Para  a  realização  da  validação  sintática  você  pode  usar  um  parser  LL1  ou  criar  o  seu  próprio 
 código de validação de declarações. '''
 
+#importa as bibliotecas
+
 import string
 import math
 
-alfa_valid = string.ascii_lowercase
+alfa_valid = string.ascii_lowercase#
 
 def get_file(file):
-  return open(file).read()
+  return open(file).read()# abre o arquivo e retorna o conteudo
 
 counterwhile = 0 
       
@@ -67,42 +69,42 @@ while counterwhile < 3:
   opcaocontagem = []
   file = get_file(f"teste{counterwhile}.txt").split("\n")
   validadorparenteses = False
-  verificar = []
+  verificar = []#lista para verificar se o arquivo esta correto
   
   for i in file:
     verificar.append("1")
     a = i.split(" ")
     novo = []
-    listcountleft = 0
+    listcountleft = 0#contador de parenteses esquerdo
     for m in a:
       for n in m:
         x = "("
         xe = ")"
         if n == x:
-          listcountleft = listcountleft + 1
+          listcountleft = listcountleft + 1#conta os parenteses esquerdo
     listcountrigjt = 0
     validadornumerolistas = False
     for l in a:
       for t in l:
         for o in t:
           if o == '1' or o == '2' or o == '3' or o == '4' or o == '5' or o == '6' or o == '7' or o == '8' or o == '9':
-            validadornumerolistas = True
+            validadornumerolistas = True#verifica se tem numero na lista
 
         
-    for m in a:
+    for m in a:#verifica se tem parenteses direito
       for n in m:
         x = "("
         xe = ")"
         if n == xe:
-          listcountrigjt = listcountrigjt + 1
-    if listcountrigjt == listcountleft:
+          listcountrigjt = listcountrigjt + 1#conta os parenteses direito
+    if listcountrigjt == listcountleft:#verifica se o numero de parenteses esquerdo e igual ao numero de parenteses direito
       print(" ")
     else:
       print(" ")
       validadorparenteses = True
     for x in a:
       item = x
-      for y in ['\n', '\t', '(', ')']:
+      for y in ['\n', '\t', '(', ')']:#remove os caracteres especiais
         item = item.replace(y, "")
       novo.append(item)
     a = novo
@@ -110,15 +112,15 @@ while counterwhile < 3:
     for interrog in a:
       if interrog == '?':
         removerInterrog = True
-    listaprontaB = []
+    listaprontaB = []#lista para verificar se o arquivo esta correto
 
 
         
-    a = [ x for x in a if x != '?' ]
+    a = [ x for x in a if x != '?' ]#remove o simbolo de interrogação
     
       
-    bufferopcaocontagem = False
-    verificaroperacao = False
+    bufferopcaocontagem = False#variavel para verificar se o arquivo esta correto
+    verificaroperacao = False#verifica se tem operacao
     
     for q in a:
       if q == 'op1' or q == 'op2':
@@ -126,23 +128,23 @@ while counterwhile < 3:
         opcaocontagem.append(a[1])
         opcaocontagem = [ x for x in opcaocontagem if x != 'op1' ]
         opcaocontagem = [ x for x in opcaocontagem if x != 'op2' ]
-        bufferopcaocontagem = True
+        bufferopcaocontagem = True#verifica se tem a variavel op1 ou op2
      
     
     buffer = 0
-    if verificaroperacao == True:
+    if verificaroperacao == True:#verifica se tem operacao
       for j in a:
         if j == '*' or j == '+' or j == '-' or j == '+':
           buffer = j
-      if buffer == '*':
+      if buffer == '*':#verifica se tem a operacao de multiplicação
 
         primtermo = float(opcaocontagem[0])
         segtermo = float(opcaocontagem[1])
-        contaPronta = primtermo * segtermo
+        contaPronta = primtermo * segtermo# faz a conta
         print(
-          '{} * {} ='.format(float(opcaocontagem[0]), float(opcaocontagem[1])),
+          '{} * {} ='.format(float(opcaocontagem[0]), float(opcaocontagem[1])),#imprime o resultado
           ' %.3f' % contaPronta)
-        listapronta.append(contaPronta)
+        listapronta.append(contaPronta)#adiciona o resultado na lista
 
       if buffer == '+':
         primtermo = float(opcaocontagem[0])
@@ -154,9 +156,9 @@ while counterwhile < 3:
       if buffer == '-':
         primtermo = float(opcaocontagem[0])
         segtermo = float(opcaocontagem[1])
-        contaPronta = primtermo - segtermo
+        contaPronta = primtermo - segtermo#
         print(
-          '{} - {} ='.format(float(opcaocontagem[0]), float(opcaocontagem[1])),
+          '{} - {} ='.format(float(opcaocontagem[0]), float(opcaocontagem[1])),#
           ' %.3f' % contaPronta)
       if buffer == '/':
 
@@ -167,21 +169,21 @@ while counterwhile < 3:
           '{} / {} ='.format(float(opcaocontagem[0]), float(opcaocontagem[1])),
           ' %.3f' % contaPronta)
     
-    print("linha {}".format(len(verificar)), "lexemas: ", f" {i} ")
+    print("linha {}".format(len(verificar)), "lexemas: ", f" {i} ")#imprime a linha e o lexema
         
     if removerInterrog == True:
       for interrog in a:
         if interrog == '*':
           a = [ x for x in a if x != '?' ]
-          a = [ x for x in a if x != '*' ]
+          a = [ x for x in a if x != '*' ]#remove o simbolo de interrogação
           firsttermo = int(a[0])
           second = int(listapronta[0])
-          print('{} / {} ='.format(float(opcaocontagem[0]), float(opcaocontagem[1])), ' %.3f' % (firsttermo * second))
+          print('{} / {} ='.format(float(opcaocontagem[0]), float(opcaocontagem[1])), ' %.3f' % (firsttermo * second))#
           
     if bufferopcaocontagem == True:
       a = [ x for x in a if x != 'op1' ]
       a = [ x for x in a if x != 'op2' ]
-      a = [ x for x in a if x != '' ]
+      a = [ x for x in a if x != '' ]#remove o simbolo de interrogação
       buffer = a[0]
       if buffer == '*':
         primtermo = float(opcaocontagem[0])
@@ -233,9 +235,9 @@ while counterwhile < 3:
         contaPronta = (primtermo / segtermo)
         print(
           '{} / {} ='.format(float(opcaocontagem[0]), float(opcaocontagem[1])),
-          ' %.3f' % contaPronta)
+          ' %.3f' % contaPronta)#imprime o resultado
         
-    if len(a) == 2 and a[0] == 'sin':
+    if len(a) == 2 and a[0] == 'sin':#verifica se o lexema é sin
       angulo = int(a[1])
       seno = math.sin(math.radians(angulo))
       print("seno de {} é {}".format(angulo, seno))
@@ -243,7 +245,7 @@ while counterwhile < 3:
 
 
       
-    elif len(a) == 2 and a[0] == 'cos':
+    elif len(a) == 2 and a[0] == 'cos':#verifica se o lexema é cos
       angulo = int(a[1])
       seno = math.cos(math.radians(angulo))
       print("cosseno de {} é {}".format(angulo, seno))
@@ -253,14 +255,14 @@ while counterwhile < 3:
       print(a[1], "elevado a", a[2], "é", denominador**elevador)
     elif len(a) == 3 and a[0] == 'rot':
       raiz = math.sqrt(int(a[1]))
-      print("a raiz quadrada é", raiz)
+      print("a raiz quadrada é", raiz)#imprime o resultado
 
     
-    elif len(a) > 3 and verificaroperacao == False:
+    elif len(a) > 3 and verificaroperacao == False:#verifica se o lexema é uma operação
       listNovo = []
       for g in a:
         elemento = g
-        a = list(string.ascii_lowercase)
+        a = list(string.ascii_lowercase)#cria uma lista com todas as letras do alfabeto
         for p in a:
           elemento = elemento.replace(p, "")
         listNovo.append(elemento)
@@ -269,7 +271,7 @@ while counterwhile < 3:
           if x == '':
               listNovo.remove(x)
       validadorparenteses = False
-      contagemdelistas = []
+      contagemdelistas = []#conta quantas listas tem
       for i in listNovo:
         contagemdelistas.append(i)
       if contagemdelistas[2] == '+':
@@ -301,7 +303,7 @@ while counterwhile < 3:
           ' %.3f' % (primtermo / segtermo))
         
   
-    if len(a) > 2 and verificaroperacao == False:
+    if len(a) > 2 and verificaroperacao == False:#verifica se o lexema é uma operação
       
       contagemdelistas = []
       for i in a:
@@ -330,13 +332,13 @@ while counterwhile < 3:
         primtermo = float(contagemdelistas[0])
         segtermo = float(contagemdelistas[1])
         print(
-          '{} / {} ='.format(float(contagemdelistas[0]), float(contagemdelistas[1])),
+          '{} / {} ='.format(float(contagemdelistas[0]), float(contagemdelistas[1])),#
           ' %.3f' % (primtermo / segtermo))
     if validadorparenteses == True:
       print("linha {}".format(len(verificar)), "sintaxe: invalido")
       validadorparenteses = False
     else:
       if validadornumerolistas == True:
-        print("linha {}".format(len(verificar)), "sintaxe: valido")
+        print("linha {}".format(len(verificar)), "sintaxe: valido")#imprime se a linha é valida ou não
     if validadornumerolistas == False:
       print("linha {}".format(len(verificar)), "sintaxe: invalido")
