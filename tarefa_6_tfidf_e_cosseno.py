@@ -136,9 +136,10 @@ array = 0
 for vector in TFIDF:#pega o conteudo de cada paragrafo da lista text
   a = array#pega o conteudo de cada paragrafo da lista text
   while a < len(TFIDF):
+    distancia = numpy.dot(vector,TFIDF[a])/(numpy.linalg.norm(vector)*numpy.linalg.norm(TFIDF[a])) #calcula a distancia entre os vetores
     arraysTFIDF[array][a] = distancia#adiciona a distancia na matriz de distancia
-    distancia = numpy.dot(vector,TFIDF[a])/(numpy.linalg.norm(vector)*numpy.linalg.norm(TF[a])) #calcula a distancia entre os vetores
     arraysTFIDF[a][array] = distancia
     array += 1
-    a += 1#incrementa o numero da frase atual   
+    a += 1#incrementa o numero da frase atual  
+
 print(arraysTFIDF)#imprime a matriz de distancia
